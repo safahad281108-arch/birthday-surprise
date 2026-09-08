@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Chotuu! 🎈</title>
+    <!-- Canvas-Confetti library for celebration effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        /* Initial Screen Styles */
+        #gift-screen {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #gift-screen:hover {
+            transform: scale(1.05);
+        }
+
+        .gift-box {
+            font-size: 100px;
+            animation: bounce 1.5s infinite;
+        }
+
+        .click-text {
+            color: #d63384;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 15px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Hidden Surprise Screen */
+        #surprise-screen {
+            display: none;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px);
+        }
+
+        .birthday-title {
+            font-size: 2.5rem;
+            color: #ff4757;
+            margin-bottom: 20px;
+            animation: glow 2s infinite alternate;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff6b81;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            color: #2f3542;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .heart {
+            color: #ff4757;
+            font-size: 1.5rem;
+        }
+
+        /* Keyframe Animations */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #ff4757, 0 0 10px #ff4757; }
+            to { text-shadow: 0 0 15px #ff6b81, 0 0 20px #ff6b81; }
+        }
+
+        /* Floating Background Balloons */
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            opacity: 0.7;
+            animation: float 8s infinite linear;
+            font-size: 30px;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Balloons -->
+    <div class="balloon" style="left: 10%; animation-delay: 0s;">🎈</div>
+    <div class="balloon" style="left: 30%; animation-delay: 2s;">🎂</div>
+    <div class="balloon" style="left: 50%; animation-delay: 4s;">🎈</div>
+    <div class="balloon" style="left: 70%; animation-delay: 1s;">🎉</div>
+    <div class="balloon" style="left: 85%; animation-delay: 3s;">🎈</div>
+
+    <div class="container">
+        <!-- Step 1: Clickable Gift Box -->
+        <div id="gift-screen" onclick="openSurprise()">
+            <div class="gift-box">🎁</div>
+            <div class="click-text">Click the box if you're not a lesbian! ✨<br>"Warning : Anything can come out of the box like<br>Tiktiki/Telapoka/Meeeee/Ghost"</div>
+        </div>
+
+        <!-- Step 2: Birthday Surprise Message -->
+        <div id="surprise-screen">
+            <h1 class="birthday-title">Happy Birthday, pencil battery! 🎉</h1>
+            
+            <!-- You can replace this image URL with a link to your friend's photo -->
+            <img class="profile-pic" src="C:\Users\fahad\OneDrive\Documents\ChromeSetUp\Files\770426898_1827121964922827_1345055961385500031_n.jpg"Birthday Person">
+
+            <p class="message">
+                Wishing you a day filled with laughter, love, cockroaches , chipkalis and unforgettable moments! <br><i>
+                On this beautiful day, I, <b>Syed Abdullah al Fahad</b>, want to thank your parents for downloading a <b>pencil battery like you</b> 🌟<br>Without this battery i couldn't be able to enjoy my days.So say thank you on my regard to your parents.Enjoy your day ( you can enjoy it better by buying me <b>Biriyani</b>, so i won't irritate you today )</i> (kala chad hasi 2 ta)
+            </p>
+
+            <div class="heart">❤️ Have the best day ever! ❤️</div>
+        </div>
+    </div>
+
+    <!-- Optional Happy Birthday Music -->
+    <audio id="birthday-song" loop>
+        <source src="C:\Users\fahad\OneDrive\Pictures\birthdaytoha.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        function openSurprise() {
+            // Hide gift screen
+            document.getElementById('gift-screen').style.display = 'none';
+
+            // Show surprise screen with fade-in effect
+            const surpriseScreen = document.getElementById('surprise-screen');
+            surpriseScreen.style.display = 'block';
+            setTimeout(() => {
+                surpriseScreen.style.opacity = '1';
+            }, 100);
+
+            // Play background audio (Optional)
+            const audio = document.getElementById('birthday-song');
+            audio.play().catch(error => console.log("Autoplay blocked by browser. User interaction needed."));
+
+            // Trigger Confetti effect
+            triggerConfetti();
+        }
+
+        function triggerConfetti() {
+            var duration = 5 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 1000 };
+
+            function randomInRange(min, max) {
+                return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+                var timeLeft = animationEnd - Date.now();
+
+                if (timeLeft <= 0) {
+                    return clearInterval(interval);
+                }
+
+                var particleCount = 50 * (timeLeft / duration);
+                
+                // Confetti firing from two sides
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
